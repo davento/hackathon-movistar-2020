@@ -1,6 +1,23 @@
 # hackathon-movistar-2020
+## Integrantes
+**Grupo ɹɐunǝɹ**
 
-Dependencias para el web-scrapping:
+* Aguilar, Anthony
+* Castro, Eduardo
+* Flores, Christopher
+* Lozada, Juan Carlos
+* Vento, Daniela Abril
+
+## Objetivo
+Automatizar el control de evidencias para Movistar
+
+## Funciones de Control
+
+Identificar conformidades en
+* Formulario de Atención
+* Evidencias fotográficas
+
+## Dependencias para el web-scrapping
 > https://sites.google.com/a/chromium.org/chromedriver/downloads
 Descargar la version adecuada para tu version de chrome u otro buscador
 Luego extraerlo en esta misma carpeta
