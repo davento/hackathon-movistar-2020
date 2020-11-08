@@ -1,6 +1,6 @@
 # hackathon-movistar-2020
 ## Integrantes
-**Grupo ɹɐunǝɹ**
+**Grupo rɐunaɹ**
 
 * Aguilar, Anthony
 * Castro, Eduardo
@@ -18,11 +18,10 @@ Identificar conformidades en
 * Evidencias fotográficas
 
 ## Dependencias para el web-scrapping
-Descargar la version adecuada para tu version de chrome u otro buscador
+Descargar la versión adecuada para tu versión de Chrome u otro buscador
 > https://sites.google.com/a/chromium.org/chromedriver/downloads
 
 Luego extraerlo en esta misma carpeta
-
 
 Corre el comando
 > source .henv/bin/activate
@@ -32,8 +31,6 @@ para entrar al virtual enviroment
 y luego
 > pip install -r requirements.txt
 
-x siacaso xD
-
 Al final prueba con
 > python scraping.py
 
@@ -41,3 +38,8 @@ y ejecuta
 > deactivate
 
 para salir del virtual env
+
+## Dependencias para la detección de imágenes
+
+Instalar Ximilar-client
+> pip install ximilar-client
