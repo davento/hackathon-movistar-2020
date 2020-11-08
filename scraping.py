@@ -54,6 +54,10 @@ searchBar.send_keys(searchCode)
 searchBar.send_keys(Keys.RETURN)
 #print(searchBar)
 
+#seleccionar la opcion no atendida
+formLink = driver.find_element_by_css_selector("div.activity-title")
+formLink.click()
+
 
 input("press enter to finish")
 driver.quit()
