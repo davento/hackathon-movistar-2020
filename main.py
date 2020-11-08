@@ -1,5 +1,6 @@
 from scraping import *
 from  form_validation import *
+from recognition  import *
 
 def main():
     PATH = "./chromedriver"
@@ -27,6 +28,8 @@ def main():
         else:
             print("incorrecto")
 
+    print("------------------imagenes--------------------")
+    image_comformity()
 
     input("press enter to finish")
     driver.quit()
