@@ -39,6 +39,16 @@ y ejecuta
 
 para salir del virtual env
 
+
+**Para Windows es necesario hacer las siguientes modificaciones**
+
+En la línea 112 cambiar el PATH
+```py
+PATH = "./chromedriver.exe"
+```
+Probar con
+> python3 scraping.py
+
 ## Dependencias para la detección de imágenes
 
 Instalar Ximilar-client
