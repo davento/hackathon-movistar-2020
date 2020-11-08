@@ -1,10 +1,7 @@
 
 import re
 
-def validate(dictionary):
-    nombres = dictionary["cliente"]
-    contacto = dictionary["descripcion"]
-    
+def validate(nombres, contacto):
     check_si_es_palabra = not (bool(re.search(r'\d', nombres)))
     numero_de_palabras = nombres.split(" ")
     check_si_es_numero = str.isdecimal(contacto)
@@ -13,10 +10,3 @@ def validate(dictionary):
         return True
     else:
         return False
-
-dict = {
-    "cliente": "Juan Pablo",
-    "descripcion": "955505868"
-}
-
-print(validate(dict))
