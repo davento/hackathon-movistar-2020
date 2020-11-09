@@ -1,13 +1,155 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
 <head>
-  <meta charset="utf-8"/>
-  <title></title>
-  <script src="" ></script>
-    
+<meta charset="utf-8">
+<title> Hackathon Movistar </title>
+
+
+<style>
+
+    body{
+        background: url('https://cdn.discordapp.com/attachments/771902055123910686/775470693718425610/background.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    } 
+
+    ul {
+        list-style: none;
+        font-size: 18px;
+        margin: 2cm;
+        font-family: monospace;
+    }
+
+    .hidden{
+        display: none;
+        font-size: 18px;
+        margin: 2cm;
+        font-family: monospace;
+    }
+
+    .form_top{
+
+        padding-top: 0.5cm;
+        padding-bottom: 0.5cm;
+    }
+
+    .form_bottom{
+        margin-left: 1cm;
+    }
+
+    .item{
+        font-size: 15px;
+        margin: 2cm;
+        font-family: monospace;
+    }
+
+    .item2{
+        font-size: 15px;
+        margin: 3cm;
+        font-family: monospace;
+    }
+
+    .titulo{
+        margin: 1cm;
+        font-size: 20px;
+        font-family: monospace;
+    }
+
+
+    .button2{
+        border-radius: 12px;
+        height:40px;
+        width: 100px;
+        margin-left: 0.5cm;
+        border:0px;
+        text-align:center;
+        font-family: 'Roboto', sans-serif;
+        background-color: #FF3366;
+        text-decoration-color: white;
+        box-shadow: 2px 2px 5px #999;    
+    }
+
+    .codigo{
+        border-radius: 12px;
+        height:40px;
+        width: 200px;
+        border:0px;
+        text-align:center;
+        font-family: 'Roboto', sans-serif;
+        box-shadow: 2px 2px 10px #666;
+    }
+
+</style>
 </head>
 <body>
+
+    <br><br><br><br><br>
+
+    <b class="titulo"> Hackathon Movistar 2020</b><br><br><br>
+    <b class="titulo"> Integrantes:</b><br><br>
+    <label class="item">Aguilar, Anthony</label><br>
+    <label class="item">Castro, Eduardo</label><br>
+    <label class="item">Flores, Christopher</label><br>
+    <label class="item">Lozada, Juan Pablo</label><br>
+    <label class="item">Vento, Daniela Abril</label><br><br>
+    <b class="titulo"> Objetivo:</b><br><br>
+    <label class="item">Automatizar el control de evidencias para Movistar</label><br><br>
+    <b class="titulo"> Funciones de control:</b><br><br>
+    <label class="item">Identificar conformidades en: </label><br><br>
+    <label class="item2">Formulario de Atención</label><br>
+    <label class="item2">Evidencias fotográficas</label><br><br><br>
+
+    <form name="form_bottom" class="form_bottom" id="form1">
+        <input type="text" method="post" name="codigo" id="codigo" class="codigo" placeholder="Ingrese codigo" required>
+        <input type="submit" value="Mandar Codigo" class="button2">
+    </form><br>
+    <div id ="error" class="hidden">Ocurrió un error!!</div>
+    <ul id="respuesta">
+        <li></li>
+    </ul>
     
 </body>
-</html>
 
+<script>
+
+    document.getElementById('form1').onsubmit = function(e) {
+            e.preventDefault();
+            
+            fetch('/request_codes', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'codigo': document.getElementById('codigo').value,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(jsonResponse) {
+                
+
+                console.log(jsonResponse);
+                const liItem = document.createElement('LI');
+                let parentNode = document.getElementById('respuesta');
+                (function remove() {
+                    while (parentNode.firstChild) {
+                        parentNode.removeChild(parentNode.firstChild);
+                    }
+                })();
+                
+                liItem.innerHTML = jsonResponse['respuesta'];
+                document.getElementById('respuesta').appendChild(liItem);
+                document.getElementById('error').className = 'hidden';
+            })
+            .catch(function(error){
+                document.getElementById('error').className = '';
+            });
+        } 
+
+
+</script>
+
+</html>

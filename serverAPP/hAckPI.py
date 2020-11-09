@@ -28,9 +28,9 @@ def validateCode():
         try:
             code = int(request.args["code"])#el codigo es un numero de 8 cifras
         except:
-            return "Error: bad formated code"
+            return {"Error":" bad formated code", "Name":"", "Description":"", "status":False} 
     else:
-        return "Error: no code provided"
+        return {"Error":"no code provided", "Name":"", "Description":"", "status":False} 
 
     pq.heappush(codesToCheck, (1,len(codesToCheck),request.args["code"]))
     validation = getResponse(request.args["code"])
@@ -48,7 +48,7 @@ def openConectionTOA(driver,name,passw):
         print("no check box detected")
 
 def searchForUserData(driver,searchcode,clearBox):
-        data={"Error":" All ok"}
+        data={"Error":"All ok"}
         clickLupa(driver)
         if clearBox:
             clickClearSearch(driver)
@@ -103,12 +103,12 @@ def main():
         time.sleep(0.5)#espera a q se llene la cola
 
 
-class correMRD(Thread):
+class correPLS(Thread):
     def run(self):
         main()
 
 if __name__ == "__main__":
-    ma = correMRD()
+    ma = correPLS()
     ma.start()
     app.run()
 
