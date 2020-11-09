@@ -106,5 +106,4 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
         result.append(iteration.copy())
         driver.back()
 
-    print(result)
     return result
