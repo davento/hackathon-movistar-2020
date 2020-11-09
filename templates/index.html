@@ -5,6 +5,17 @@
 <title> Hackathon Movistar </title>
 <style>
 
+    ul {
+        list-style: none;
+        font-size: 18px;
+        margin: 2cm;
+        font-family: monospace;
+    }
+
+    .hidden{
+        display: none;
+    }
+
     .form_top{
         background-color: black;
         padding-top: 0.5cm;
@@ -69,12 +80,57 @@
     <label class="item2">Formulario de Atención</label><br>
     <label class="item2">Evidencias fotográficas</label><br><br><br>
 
-    <form action="/request_codes" method="post" name="form_bottom" class="form_bottom">
-        <input type="text" method="post" name="codigo">
+    <form name="form_bottom" class="form_bottom" id="form1">
+        <input type="text" method="post" name="codigo" id="codigo">
         <input type="submit" value="Mandar Codigo" class="button1">
-    </form>
+    </form><br>
+    <div id ="error" class="hidden">Ocurrió un error!!</div>
+    <ul id="respuesta">
+        <li></li>
+    </ul>
 
     
 </body>
+
+<script>
+
+    document.getElementById('form1').onsubmit = function(e) {
+            e.preventDefault();
+            
+            fetch('/request_codes', {
+                method: 'POST',
+                body: JSON.stringify({
+                    'codigo': document.getElementById('codigo').value,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(function(response){
+                return response.json();
+            })
+            .then(function(jsonResponse) {
+                
+
+                console.log(jsonResponse);
+                const liItem = document.createElement('LI');
+                let parentNode = document.getElementById('respuesta');
+                (function remove() {
+                    while (parentNode.firstChild) {
+                        parentNode.removeChild(parentNode.firstChild);
+                    }
+                })();
+                
+                liItem.innerHTML = jsonResponse['respuesta'];
+                document.getElementById('respuesta').appendChild(liItem);
+                document.getElementById('error').className = 'hidden';
+            })
+            .catch(function(error){
+                document.getElementById('error').className = '';
+            });
+        } 
+
+
+</script>
 
 </html>

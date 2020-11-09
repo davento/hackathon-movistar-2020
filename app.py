@@ -22,10 +22,20 @@ def button():
 
 @app.route('/request_codes', methods=['POST'])
 def codes():
-    codigo = request.form['codigo']
-    print(codigo)
+    try:
+        codigo = request.get_json()['codigo']
 
-    return redirect(url_for('index'))
+        if(True):
+            respuesta = 'El formulario numero '+ codigo + ' es conforme'
+        else:
+            respuesta ='El formulario numero '+ codigo + 'no es conforme'
+        
+        return jsonify({
+            'respuesta': respuesta
+        })
+    except Exception as e:
+        print('Ocurrio un error')
+    
 
 
 if __name__ == '__main__':
