@@ -57,9 +57,15 @@ print(encrypted_message)
 decrypted_message = decrypt_string(encrypted_message, password)
 print(decrypted_message)
 
+<<<<<<< HEAD
 file_name = "img.jpg"
 super_pasword = "super secret"
 encrypt_file(file_name, password)
 encrypt_file(file_name, password)
 decrypt_file(file_name, password)
 decrypt_file(file_name, password)
+=======
+# fileName = "img.jpg"
+# decrypt_file(fileName, password)
+
+>>>>>>> 9126b5ee0e846914f01f78edb9bc521cca95aaf9
