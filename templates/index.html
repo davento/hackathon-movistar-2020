@@ -3,8 +3,16 @@
 <head>
 <meta charset="utf-8">
 <title> Hackathon Movistar </title>
+
+
 <style>
 
+    body{
+        background: url('https://cdn.discordapp.com/attachments/771902055123910686/775470693718425610/background.png');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+    } 
     ul {
         list-style: none;
         font-size: 18px;
@@ -14,6 +22,9 @@
 
     .hidden{
         display: none;
+        font-size: 18px;
+        margin: 2cm;
+        font-family: monospace;
     }
 
     .form_top{
@@ -58,6 +69,19 @@
         cursor: pointer;
     }
 
+    .button2{
+        border-radius: 12px;
+        height:40px;
+        width: 100px;
+        margin-left: 0.5cm;
+        border:0px;
+        text-align:center;
+        font-family: 'Roboto', sans-serif;
+        background-color: #FF3366;
+        text-decoration-color: white;
+        box-shadow: 2px 2px 5px #999;    
+    }
+
 </style>
 </head>
 <body>
@@ -81,14 +105,13 @@
     <label class="item2">Evidencias fotográficas</label><br><br><br>
 
     <form name="form_bottom" class="form_bottom" id="form1">
-        <input type="text" method="post" name="codigo" id="codigo">
-        <input type="submit" value="Mandar Codigo" class="button1">
+        <input type="text" method="post" name="codigo" id="codigo" required>
+        <input type="submit" value="Mandar Codigo" class="button2">
     </form><br>
     <div id ="error" class="hidden">Ocurrió un error!!</div>
     <ul id="respuesta">
         <li></li>
     </ul>
-
     
 </body>
 
