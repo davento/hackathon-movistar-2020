@@ -4,8 +4,8 @@ import heapq as pq
 import time
 #hum 
 from scraping import *
-from  form_validation import *
-from recognition  import *
+import  form_validation as FV
+#from recognition  import *
 from threading import *
 
 app = flask.Flask(__name__)
@@ -34,6 +34,7 @@ def validateCode():
 
     pq.heappush(codesToCheck, (1,len(codesToCheck),request.args["code"]))
     validation = getResponse(request.args["code"])
+    validation["status"]= FV.validate(validation["Name"],validation["Description"])
 
     return jsonify(validation)
 
