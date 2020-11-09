@@ -1,5 +1,6 @@
 from Crypto.Cipher import AES
 import hashlib
+import os
 
 IV = 'dAfKMnokLPDKIsAr'
 
@@ -32,25 +33,22 @@ def decrypt_string(message, password):
     decrypted_message = decrypted_message.rstrip().decode()
     return decrypted_message
 
-# def encryptFile(file, password):
-#     key = password.encode()
-#     key = hashlib.sha256(key).digest()
-#     mode = AES.MODE_CBC
-#     cipher = AES.new(key, mode, IV)
-#     with open(file, 'rb') as f:
-#         originalFile = f.read()
-#     padded_file = pad_message(originalFile)
-#     encryted_message = cipher.encrypt(padded_file)
-#     return encryptedMessage
+def encrypt_file(file, password):
+    cipher = cipher_object(password)
+    with open(file, 'rb') as f:
+        originalFile = f.read()
+    padded_file = pad_file(originalFile)
+    encrypted_file = cipher.encrypt(padded_file)
+    with open(file, 'wb') as e:
+        e.write(encrypted_file)
 
-# def decryptFile(file, password):
-#     key = password.encode()
-#     key = hashlib.sha256(key).digest()
-#     mode = AES.MODE_CBC
-#     cipher = AES.new(key, mode, IV)
-#     with open(file, 'rb') as f:
-#         encryptedFile = f.read()
-#     decryptedFile = cipher.decrypt(encryptFile)
+def decrypt_file(file, password):
+    cipher = cipher_object(password)
+    with open(file, 'rb') as f:
+        encrypted_file = f.read()
+    decrypted_file = cipher.decrypt(encrypted_file)
+    with open(file, 'wb') as e:
+        e.write(decrypted_file)
 
 message = "Abril Vento"
 password = "secret"
@@ -58,3 +56,7 @@ encrypted_message = encrypt_string(message, password)
 print(encrypted_message)
 decrypted_message = decrypt_string(encrypted_message, password)
 print(decrypted_message)
+
+# fileName = "img.jpg"
+# decrypt_file(fileName, password)
+
