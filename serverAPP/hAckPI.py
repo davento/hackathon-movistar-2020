@@ -6,6 +6,7 @@ import time
 from scraping import *
 from  form_validation import *
 from recognition  import *
+from threading import *
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -22,6 +23,7 @@ def getResponse(code):
                                         #este es el request.args --v
 @app.route("/v1/validate", methods=['GET'])#IP:port/v1/validate?code=<code>
 def validateCode():
+    print("se recive un request")
     if "code" in request.args:
         try:
             code = int(request.args["code"])#el codigo es un numero de 8 cifras
@@ -36,6 +38,7 @@ def validateCode():
     return jsonify(validation)
 
 def openConectionTOA(driver,name,passw):
+    print("conectando con TOA")
     enterName(name,driver)
     enterPassword(passw,driver)
     try:
@@ -56,10 +59,28 @@ def searchForUserData(driver,searchcode,clearBox):
             driver.back()
         except:
             data= {"Error":"bad code format","Client":"","Description":""}
+        finally:
+            print(data)
+            return data.copy()#el copy es x siacaso no valla a ser q nos de un error :v
 
-        return data.copy()#el copy es x siacaso no valla a ser q nos de un error :v
+#def launchScrapper():
+#    print("Iniciando el scrapper")
+#    PATH = "./chromedriver"
+#    userName="HACKATON10"
+#    userPass="Hackaton_10"
+#    driver = webdriver.Chrome(PATH)
+#    driver.implicitly_wait(5)
+#    driver.get("https://login.etadirect.com/telefonica-pe.etadirect.com/mobility/")
+#    control=0
+#    openConectionTOA(driver,userName,userPass)
+#    return (driver,control)#kiero q se pase este (por referencia) :v
 
-def launchScrapper():
+def main():
+#abre el navegador
+    #initial = launchScrapper()
+    #driver = initial[0]
+    #control = initial[1]
+    print("Iniciando el scrapper")
     PATH = "./chromedriver"
     userName="HACKATON10"
     userPass="Hackaton_10"
@@ -68,29 +89,25 @@ def launchScrapper():
     driver.get("https://login.etadirect.com/telefonica-pe.etadirect.com/mobility/")
     control=0
     openConectionTOA(driver,userName,userPass)
-    return (driver,control)#kiero q se pase este (por referencia) :v
 
-def main():
-#abre el navegador
-    initial = launchScrapper()
-    driver = initial[0]
-    control = initial[1]
-
-    app.run()
     while 1:
         while len(codesToCheck)>0:
+            print("analizando codigos")
             priorityCode = pq.heappop(codesToCheck)[2]
             codesChecked[priorityCode] = searchForUserData(driver,priorityCode,control)
 
             control=1#esto es para q se comporte algo diferente solo en la 1ra iteracion
 
+        print("esperando algun request")
         time.sleep(0.5)#espera a q se llene la cola
 
 
-#esto aun no se como hacerlo o como sera xD
-#@app.route("/sendImage/<tipo>", methods=['POST'])
-#@app.route("/sendImage/<tipo>", methods=['POST'])
+class correMRD(Thread):
+    def run(self):
+        main()
 
 if __name__ == "__main__":
-    main()
+    ma = correMRD()
+    ma.start()
+    app.run()
 
