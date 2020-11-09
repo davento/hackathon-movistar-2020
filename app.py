@@ -14,21 +14,18 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/request_codes')
-def request_codes():
-    return render_template('request_codes.html')
 
 @app.route('/button', methods=['POST'])
 def button():
-    if(request.form['button1'] == 'Home'):
-        return redirect(url_for('index'))
-    else:
-        return redirect(url_for('request_codes'))
+    return redirect(url_for('index'))
 
-#@app.route('/codes', method=['POST'])
-#def codes():
-#    return 
 
+@app.route('/request_codes', methods=['POST'])
+def codes():
+    codigo = request.form['codigo']
+    print(codigo)
+
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

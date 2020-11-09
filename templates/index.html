@@ -11,6 +11,28 @@
         padding-bottom: 0.5cm;
     }
 
+    .form_bottom{
+        margin-left: 1cm;
+    }
+
+    .item{
+        font-size: 15px;
+        margin: 2cm;
+        font-family: monospace;
+    }
+
+    .item2{
+        font-size: 15px;
+        margin: 3cm;
+        font-family: monospace;
+    }
+
+    .titulo{
+        margin: 1cm;
+        font-size: 20px;
+        font-family: monospace;
+    }
+
     .button1{
         background-color: black; 
         border: 1px solid white;
@@ -30,8 +52,28 @@
 <body>
     <form action="/button" method="post" name="boton" class="form_top">
     <input type="submit" value="Home" name="button1" class="button1">
-    <input type="submit" value="Ingresar Codigos" name="button1" class="button1">
     </form>
+    <br><br><br>
+
+    <b class="titulo"> Hackathon Movistar 2020</b><br><br><br>
+    <b class="titulo"> Integrantes:</b><br><br>
+    <label class="item">Aguilar, Anthony</label><br>
+    <label class="item">Castro, Eduardo</label><br>
+    <label class="item">Flores, Christopher</label><br>
+    <label class="item">Lozada, Juan Pablo</label><br>
+    <label class="item">Vento, Daniela Abril</label><br><br>
+    <b class="titulo"> Objetivo:</b><br><br>
+    <label class="item">Automatizar el control de evidencias para Movistar</label><br><br>
+    <b class="titulo"> Funciones de control:</b><br><br>
+    <label class="item">Identificar conformidades en: </label><br><br>
+    <label class="item2">Formulario de Atención</label><br>
+    <label class="item2">Evidencias fotográficas</label><br><br><br>
+
+    <form action="/request_codes" method="post" name="form_bottom" class="form_bottom">
+        <input type="text" method="post" name="codigo">
+        <input type="submit" value="Mandar Codigo" class="button1">
+    </form>
+
     
 </body>
 
