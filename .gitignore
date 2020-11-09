@@ -1,4 +1,5 @@
-chromedriver
-chromedriver.exe
-.henv
-__pycache__
+serverAPP/chromedriver
+serverApp/chromedriver.exe
+serverApp/.henv
+serverApp/__pycache__
+serverApp/scraping.pyc

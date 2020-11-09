@@ -6,15 +6,15 @@ def main():
     PATH = "./chromedriver"
     userName="HACKATON10"
     userPass="Hackaton_10"
-
-    searchCode =[
-                "12509324",
-                "12522060",
-                "12565234"
-            ]
 #abre el navegador
     driver = webdriver.Chrome(PATH)
     driver.implicitly_wait(10)
+
+#    searchCode =[
+#                "12509324",
+#                "12522060",
+#                "12565234"
+#            ]
 #ingresa a la web
     driver.get("https://login.etadirect.com/telefonica-pe.etadirect.com/mobility/")
     print(driver.title)

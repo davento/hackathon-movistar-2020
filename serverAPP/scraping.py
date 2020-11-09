@@ -26,7 +26,7 @@ def clickCheckboxAndEnter(usrpss, driver):
     time.sleep(0.5)
     enterPassword(usrpss,driver)
 
-#en este punto ya se está en la siguiente pagina 
+#en este punto ya se esta en la siguiente pagina 
 #ironicamente buscar el boton de busqueda
 def clickLupa(driver):
     buttonsPanel = driver.find_element_by_css_selector("*.buttons-panel")
@@ -83,26 +83,27 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
     clickCheckboxAndEnter(contraseniaDeUsuario,driver)
 
 # solo para el primer codigo
-    iteration["codigo"]=codigosBusqueda[0]
-    clickLupa(driver)
-    searchSearchBox(driver)
-    searchElement(codigosBusqueda[0],driver)
-    clickBlueOption(driver)
-    getTexts(iteration,driver)
-    print(iteration)
-    result.append(iteration)
-    driver.back()
+#    iteration["codigo"]=codigosBusqueda[0]
+#    clickLupa(driver)
+#    searchSearchBox(driver)
+#    searchElement(codigosBusqueda[0],driver)
+#    clickBlueOption(driver)
+#    getTexts(iteration,driver)
+#    print(iteration)
+#    result.append(iteration.copy())
+#    driver.back()
 
 # para los demas codigos 
-    for i in range(1,len(codigosBusqueda)):
+    for i in range(0,len(codigosBusqueda)):
         iteration["codigo"]=codigosBusqueda[i]
         clickLupa(driver)
-        clickClearSearch(driver)
+        if i>0:
+            clickClearSearch(driver)
         searchSearchBox(driver)
         searchElement(codigosBusqueda[i],driver)
         clickBlueOption(driver)
-        getTexts(iteration,driver)
-        print(iteration)
+        getTexts(iteration,driver)#esto modifica a iteration
+        #print(iteration)
         result.append(iteration.copy())
         driver.back()
 
