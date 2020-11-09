@@ -103,7 +103,7 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
         clickBlueOption(driver)
         getTexts(iteration,driver)
         print(iteration)
-        result.append(iteration)
+        result.append(iteration.copy())
         driver.back()
 
     print(result)

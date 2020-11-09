@@ -3,7 +3,7 @@ from  form_validation import *
 from recognition  import *
 
 def main():
-    PATH = "./chromedriver.exe"
+    PATH = "./chromedriver"
     userName="HACKATON10"
     userPass="Hackaton_10"
 
