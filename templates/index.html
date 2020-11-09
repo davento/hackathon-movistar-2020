@@ -13,6 +13,7 @@
         background-attachment: fixed;
         background-size: 100% 100%;
     } 
+
     ul {
         list-style: none;
         font-size: 18px;
@@ -28,7 +29,7 @@
     }
 
     .form_top{
-        background-color: black;
+
         padding-top: 0.5cm;
         padding-bottom: 0.5cm;
     }
@@ -55,19 +56,6 @@
         font-family: monospace;
     }
 
-    .button1{
-        background-color: black; 
-        border: 1px solid white;
-        color: white;
-        padding: 15px 32px;
-        margin-right: 0.8cm;
-        margin-left: 0.5cm;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-    }
 
     .button2{
         border-radius: 12px;
@@ -82,11 +70,20 @@
         box-shadow: 2px 2px 5px #999;    
     }
 
+    .codigo{
+        border-radius: 12px;
+        height:40px;
+        width: 200px;
+        border:0px;
+        text-align:center;
+        font-family: 'Roboto', sans-serif;
+        box-shadow: 2px 2px 10px #666;
+    }
+
 </style>
 </head>
 <body>
     <form action="/button" method="post" name="boton" class="form_top">
-    <input type="submit" value="Home" name="button1" class="button1">
     </form>
     <br><br><br>
 
@@ -105,7 +102,7 @@
     <label class="item2">Evidencias fotográficas</label><br><br><br>
 
     <form name="form_bottom" class="form_bottom" id="form1">
-        <input type="text" method="post" name="codigo" id="codigo" required>
+        <input type="text" method="post" name="codigo" id="codigo" class="codigo" placeholder="Ingrese codigo" required>
         <input type="submit" value="Mandar Codigo" class="button2">
     </form><br>
     <div id ="error" class="hidden">Ocurrió un error!!</div>
