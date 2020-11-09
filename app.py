@@ -15,10 +15,6 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/button', methods=['POST'])
-def button():
-    return redirect(url_for('index'))
-
 
 @app.route('/request_codes', methods=['POST'])
 def codes():
