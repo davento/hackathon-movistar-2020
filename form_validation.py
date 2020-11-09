@@ -1,12 +1,18 @@
 
 import re
 
-def validate(nombres, contacto):
-    check_si_es_palabra = not (bool(re.search(r'\d', nombres)))
-    numero_de_palabras = nombres.split(" ")
-    check_si_es_numero = str.isdecimal(contacto)
-
-    if(check_si_es_numero and check_si_es_palabra and (len(contacto)== 9 or len(contacto)==7) and len(numero_de_palabras)>=2):
-        return True
-    else:
+def validate(name, description):
+   
+    check_if_word = not (bool(re.search(r'\d', name)))
+    if (not check_if_word):
         return False
+    
+    number_of_words = name.split(" ")
+    if (len(number_of_words) < 2):
+        return False
+
+    for number in re.findall(r"\d+", description):
+        if(not (str.isdecimal(number) and (len(number)== 9 or len(number)==7))):
+            return False
+    
+    return True

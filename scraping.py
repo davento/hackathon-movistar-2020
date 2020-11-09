@@ -89,7 +89,7 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
     searchElement(codigosBusqueda[0],driver)
     clickBlueOption(driver)
     getTexts(iteration,driver)
-#    print(iteration)
+    print(iteration)
     result.append(iteration)
     driver.back()
 
@@ -102,8 +102,9 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
         searchElement(codigosBusqueda[i],driver)
         clickBlueOption(driver)
         getTexts(iteration,driver)
-        #print(iteration)
+        print(iteration)
         result.append(iteration)
         driver.back()
 
+    print(result)
     return result

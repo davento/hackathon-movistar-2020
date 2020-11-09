@@ -3,7 +3,7 @@ from  form_validation import *
 from recognition  import *
 
 def main():
-    PATH = "./chromedriver"
+    PATH = "./chromedriver.exe"
     userName="HACKATON10"
     userPass="Hackaton_10"
 
@@ -19,11 +19,11 @@ def main():
     driver.get("https://login.etadirect.com/telefonica-pe.etadirect.com/mobility/")
     print(driver.title)
 
-    resultado = extractData(driver,userName,userPass,searchCode)
+    result = extractData(driver,userName,userPass,searchCode)
 
-    for datos in resultado:
-        print(datos["codigo"], "es: ")
-        if validate(datos["cliente"],datos["descripcion"]):
+    for data in result:
+        print(data["codigo"], "es: ")
+        if validate(data["cliente"],data["descripcion"]):
             print("correcto")
         else:
             print("incorrecto")
