@@ -59,8 +59,8 @@ def clickBlueOption(driver):
 def getTexts(result,driver):
     clientName = driver.find_element_by_xpath("//*[text()='Cierre']/../../div[@class='cl-column']/div[21]/*[2]/*[1]/*[1]/*[text()]")
     description = driver.find_element_by_xpath("//*[text()='Cierre']/../../div[@class='cl-column']/div[30]/*[2]/*[1]/*[1]/*[text()]")
-    result["cliente"] = clientName.get_attribute("innerText")
-    result["descripcion"] = description.get_attribute("innerText")
+    result["Name"] = clientName.get_attribute("innerText")
+    result["Description"] = description.get_attribute("innerText")
 
 #imagenes
 # def getImages(result):
@@ -73,7 +73,7 @@ def extractData(driver, nombreDeUsuario, contraseniaDeUsuario, codigosBusqueda):
 
     iteration = {
             "codigo":"",
-            "cliente":"",
+            "nombres":"",
             "descripcion":""
             }
     result= []
